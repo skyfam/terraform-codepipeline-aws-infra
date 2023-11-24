@@ -8,7 +8,9 @@ data "aws_iam_policy_document" "codebuild-policy-document" {
         actions = ["s3:*"]
         resources = [
           "${aws_s3_bucket.s3-bucket-backend.arn}/*",
-          "${aws_s3_bucket.s3-bucket-backend.arn}"
+          "${aws_s3_bucket.s3-bucket-backend.arn}",
+          "${var.s3_tf_arn}/*",
+          "${var.s3_tf_arn}"          
         ]
         effect = "Allow"
     }

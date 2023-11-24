@@ -62,3 +62,8 @@ variable "codestar_arn" {
     type = string
     default = "arn:aws:codestar-connections:us-east-1:892885335683:connection/3e1f592c-e242-4431-99b8-356f028abe81"
 }
+
+variable "s3_tf_arn" {
+    type = string
+    default = "arn:aws:s3:::srmk-terraform-state"
+}
