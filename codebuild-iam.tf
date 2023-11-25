@@ -22,7 +22,14 @@ data "aws_iam_policy_document" "codebuild-policy-document" {
       ]
 
       resources = ["*"]
-    }    
+    }
+    statement {
+      effect = "Allow"
+
+      actions = ["autoscaling:*", "cloudwatch:*", "elasticloadbalancing:*"]
+
+      resources = ["*"]
+    }        
 }
 
 resource "aws_iam_policy" "codebuild-policy" {

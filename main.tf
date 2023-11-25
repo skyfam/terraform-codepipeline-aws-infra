@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "s3-bucket-backend" {
   bucket = var.s3_bucket_name
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_ownership_controls" "s3-bucket-backend-ownership" {
