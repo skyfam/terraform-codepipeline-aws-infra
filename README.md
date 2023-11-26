@@ -4,19 +4,12 @@
 
 This repo implements the provisions the following infrastructure on the AWS:
 
-* VPC.
-* Security Group.
-* Subnets.
-* Route Table.
-* Internet Gateway.
-* Launch Configuration (with custom AMI).
-* Application Load Balancer:
-  * Load Balancer.
-  * Target Group.
-* Auto Scaling Group.
-* Auto Scaling Policies.
-  * Predictive Auto Scaling.
-  * Horizontal Auto Scaling.
+* CodeBuild.
+* CodePipeline.
+* IAM Roles.
+* IAM Policies for CodeBuild & CodePipelines.
+* S3 bucket to save build artifacts.
+
 
 ## Pre Requisites
 
