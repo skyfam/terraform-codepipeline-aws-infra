@@ -9,7 +9,7 @@ variable "aws_region" {
 
 variable "git_repo_name" {
   type = string
-  default = "srmklive/aws-codedeploy-ec2-alb"
+  default = "srmklive/ec2-alb-asg"
 }
 
 variable "s3_bucket_name" {
@@ -55,9 +55,4 @@ variable "codebuild_destroy_project_name" {
 variable "codepipeline_name" {
     type = string
     default = "srmk-infra-vpc-codepipeline" 
-}
-
-variable "s3_tf_arn" {
-    type = string
-    value = data.aws_s3_bucket.s3-tf-state.arn
 }
