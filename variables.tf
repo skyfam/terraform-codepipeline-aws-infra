@@ -9,14 +9,13 @@ variable "aws_region" {
 
 variable "git_repo_name" {
   type = string
-  default = "srmklive/ec2-alb-asg"
+  default = "srmklive/aws-codedeploy-ec2-alb"
 }
 
 variable "s3_bucket_name" {
     type = string
     default = "srmk-infra-vpc-backend"
 }
-
 
 variable "codebuild_role_name" {
     type = string
@@ -56,14 +55,4 @@ variable "codebuild_destroy_project_name" {
 variable "codepipeline_name" {
     type = string
     default = "srmk-infra-vpc-codepipeline" 
-}
-
-variable "codestar_arn" {
-    type = string
-    default = "arn:aws:codestar-connections:us-east-1:892885335683:connection/3e1f592c-e242-4431-99b8-356f028abe81"
-}
-
-variable "s3_tf_arn" {
-    type = string
-    default = "arn:aws:s3:::srmk-terraform-state"
 }

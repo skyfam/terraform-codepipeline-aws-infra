@@ -19,7 +19,7 @@ resource "aws_codepipeline" "codepipeline" {
             output_artifacts = ["infra_vpc_code"]
             configuration = {
                 FullRepositoryId = var.git_repo_name
-                ConnectionArn = var.codestar_arn
+                ConnectionArn = data.aws_codestarconnections_connection.tf-github.arn
                 BranchName   = "main"
                 OutputArtifactFormat = "CODE_ZIP"
             }

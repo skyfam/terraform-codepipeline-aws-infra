@@ -1,3 +1,11 @@
+data "aws_codestarconnections_connection" "tf-github" {
+  name = "TF-Github"
+}
+
+data "aws_s3_bucket" "s3-tf-state" {
+  bucket = "srmk-terraform-state"
+}
+
 resource "aws_s3_bucket" "s3-bucket-backend" {
   bucket = var.s3_bucket_name
   force_destroy = true
