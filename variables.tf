@@ -1,6 +1,6 @@
-locals {
+/*locals {
   envs = { for tuple in regexall("(.*)=(.*)", file(".env")) : tuple[0] => sensitive(tuple[1]) }
-}
+}*/
 
 variable "aws_region" {
   type = string
@@ -55,4 +55,9 @@ variable "codebuild_destroy_project_name" {
 variable "codepipeline_name" {
     type = string
     default = "srmk-infra-vpc-codepipeline" 
+}
+
+variable "s3_tf_arn" {
+    type = string
+    value = data.aws_s3_bucket.s3-tf-state.arn
 }

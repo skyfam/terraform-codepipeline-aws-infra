@@ -9,8 +9,8 @@ data "aws_iam_policy_document" "codebuild-policy-document" {
         resources = [
           "${aws_s3_bucket.s3-bucket-backend.arn}/*",
           "${aws_s3_bucket.s3-bucket-backend.arn}",
-          "${data.aws_s3_bucket.s3-tf-state.arn}/*",
-          "${data.aws_s3_bucket.s3-tf-state}"
+          "${var.s3_tf_arn}/*",
+          "${var.s3_tf_arn}"
         ]
         effect = "Allow"
     }

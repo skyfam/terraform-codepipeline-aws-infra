@@ -55,4 +55,19 @@ resource "aws_codepipeline" "codepipeline" {
             }
         }
     }
+
+    stage {
+        name ="Destroy"
+        action{
+            name = "Destroy"
+            category = "Build"
+            provider = "CodeBuild"
+            version = "1"
+            owner = "AWS"
+            input_artifacts = ["infra_vpc_code"]
+            configuration = {
+                ProjectName = aws_codebuild_project.codebuild_project_destroy_stage.name
+            }
+        }
+    }
 }
