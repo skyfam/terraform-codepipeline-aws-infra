@@ -52,6 +52,9 @@ Use the following link for setting Github connection for AWS CodePipeline:
 
 https://docs.aws.amazon.com/dtconsole/latest/userguide/connections-create-github.html#connections-create-github-console
 
+When the connection is setup, just add the name on the line 2 in the **main.tf** file. This demo is setup to use the following repo:
+
+https://github.com/srmklive/ec2-elb-asg
 
 ### Running the code
 
