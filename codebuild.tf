@@ -60,9 +60,3 @@ resource "aws_codebuild_project" "codebuild_project_destroy_stage" {
      buildspec = file("buildspec/destroy-buildspec.yml")
  }
 }
-
-resource "aws_codebuild_source_credential" "github" {
-  auth_type   = "PERSONAL_ACCESS_TOKEN"
-  server_type = "GITHUB"
-  token       = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)["github_access_token"]
-}

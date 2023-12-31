@@ -19,11 +19,6 @@ data "aws_iam_policy_document" "codepipeline-policy-document" {
           ]
         effect = "Allow"
     }
-    /*statement{
-        actions = ["codecommit:*"]
-        resources = [aws_codecommit_repository.infra-vpc-codecommit-repo.arn]
-        effect = "Allow"
-    }*/
     statement{
         actions = ["codestar-connections:UseConnection"]
         resources = ["*"]
