@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "git_repo_name" {
   type = string
-  default = "srmklive/ec2-alb-asg"
+  default = "srmklive/aws-codedeploy-ec2-alb"
 }
 
 variable "s3_bucket_name" {

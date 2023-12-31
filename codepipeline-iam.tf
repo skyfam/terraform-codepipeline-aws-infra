@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "codepipeline-policy-document" {
     }
     statement{
         actions = ["codestar-connections:UseConnection"]
-        resources = ["*"]
+        resources = [data.aws_codestarconnections_connection.tf-github.arn]
         effect = "Allow"
     }
     statement{

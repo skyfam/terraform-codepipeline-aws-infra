@@ -1,10 +1,5 @@
 data "aws_iam_policy_document" "codebuild-policy-document" {
     statement{
-        actions = ["logs:*"]
-        resources = ["*"]
-        effect = "Allow"
-    }
-    statement{
         actions = ["s3:*"]
         resources = [
           "${aws_s3_bucket.s3-bucket-backend.arn}/*",
@@ -18,15 +13,17 @@ data "aws_iam_policy_document" "codebuild-policy-document" {
       effect = "Allow"
 
       actions = [
-        "ec2:*"
+        "autoscaling:*", 
+        "cloudwatch:*", 
+        "codestar-connections:*", 
+        "ec2:*", 
+        "elasticloadbalancing:*", 
+        "iam:*", 
+        "kms:*", 
+        "logs:*", 
+        "rds:*", 
+        "secretsmanager:*"
       ]
-
-      resources = ["*"]
-    }
-    statement {
-      effect = "Allow"
-
-      actions = ["autoscaling:*", "cloudwatch:*", "elasticloadbalancing:*"]
 
       resources = ["*"]
     }        
