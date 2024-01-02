@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "codepipeline-policy-document" {
         resources = [
           "arn:aws:codebuild:${var.aws_region}:${local.account_id}:project/${var.codebuild_plan_project_name}",
           "arn:aws:codebuild:${var.aws_region}:${local.account_id}:project/${var.codebuild_apply_project_name}",
-          "arn:aws:codebuild:${var.aws_region}:${local.account_id}:project/${var.codebuild_destroy_project_name}"
+          var.infra_destroy ? "arn:aws:codebuild:${var.aws_region}:${local.account_id}:project/${var.codebuild_destroy_project_name}" : "*"
           ]
         effect = "Allow"
     }

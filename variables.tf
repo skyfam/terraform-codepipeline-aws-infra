@@ -52,3 +52,7 @@ variable "codepipeline_name" {
     type = string
     default = "srmk-infra-vpc-codepipeline" 
 }
+
+variable "infra_destroy" {
+    type = bool
+}

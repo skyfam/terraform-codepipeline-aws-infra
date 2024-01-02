@@ -15,14 +15,18 @@ data "aws_iam_policy_document" "codebuild-policy-document" {
       actions = [
         "autoscaling:*", 
         "cloudwatch:*", 
-        "codestar-connections:*", 
+        "codestar-connections:*",
+        "codedeploy:*",
+        "codepipeline:*", 
         "ec2:*", 
         "elasticloadbalancing:*", 
         "iam:*", 
         "kms:*", 
         "logs:*", 
-        "rds:*", 
-        "secretsmanager:*"
+        "rds:*",
+        "s3:*", 
+        "secretsmanager:*",
+        "sns:*"
       ]
 
       resources = ["*"]

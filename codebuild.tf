@@ -11,12 +11,12 @@ resource "aws_codebuild_project" "codebuild_project_plan_stage" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "hashicorp/terraform:latest"
     type                        = "LINUX_CONTAINER"
- }
+  }
  
   source {
-     type   = "CODEPIPELINE"
-     buildspec = file("buildspec/plan-buildspec.yml")
- }
+    type   = "CODEPIPELINE"
+    buildspec = file("buildspec/plan-buildspec.yml")
+  }
 }
 
 resource "aws_codebuild_project" "codebuild_project_apply_stage" {
@@ -32,15 +32,16 @@ resource "aws_codebuild_project" "codebuild_project_apply_stage" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "hashicorp/terraform:latest"
     type                        = "LINUX_CONTAINER"
- }
+  }
 
   source {
-     type   = "CODEPIPELINE"
-     buildspec = file("buildspec/apply-buildspec.yml")
- }
+    type   = "CODEPIPELINE"
+    buildspec = file("buildspec/apply-buildspec.yml")
+  }
 }
 
 resource "aws_codebuild_project" "codebuild_project_destroy_stage" {
+  count         = var.infra_destroy ? 1 : 0
   name          = var.codebuild_destroy_project_name
   description   = "Terraform Destroy Stage for infra VPC"
   service_role  = aws_iam_role.codebuild-role.arn
@@ -53,10 +54,10 @@ resource "aws_codebuild_project" "codebuild_project_destroy_stage" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "hashicorp/terraform:latest"
     type                        = "LINUX_CONTAINER"
- }
+  }
 
   source {
-     type   = "CODEPIPELINE"
-     buildspec = file("buildspec/destroy-buildspec.yml")
- }
+    type   = "CODEPIPELINE"
+    buildspec = file("buildspec/destroy-buildspec.yml")
+  }
 }
