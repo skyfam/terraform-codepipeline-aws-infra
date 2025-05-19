@@ -71,7 +71,8 @@ resource "aws_iam_role_policy" "codebuild-role-policy" {
         Action = [
           "codebuild:BatchGetProjects"
         ],
-        Resource = "arn:aws:codebuild:ap-south-1:256364431802:project/srmk-infra-vpc-codebuild-project-plan"
+        Resource = ["arn:aws:codebuild:ap-south-1:256364431802:project/srmk-infra-vpc-codebuild-project-plan",
+          "arn:aws:codebuild:ap-south-1:256364431802:project/srmk-infra-vpc-codebuild-project-apply"]
       }
     ]
   })
