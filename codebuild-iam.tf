@@ -59,6 +59,25 @@ resource "aws_iam_role" "codebuild-role" {
 EOF
 }
 
+resource "aws_iam_role_policy" "codebuild-role-policy" {
+  name = "codebuild-inline-policy"
+  role = aws_iam_role.codebuild-role.name
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "codebuild:BatchGetProjects"
+        ],
+        Resource = "arn:aws:codebuild:ap-south-1:256364431802:project/srmk-infra-vpc-codebuild-project-plan"
+      }
+    ]
+  })
+}
+
+
 resource "aws_iam_role_policy_attachment" "codebuild-policy-attachment1" {
   policy_arn = aws_iam_policy.codebuild-policy.arn
   role       = aws_iam_role.codebuild-role.id
