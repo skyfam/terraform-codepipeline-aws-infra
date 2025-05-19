@@ -1,3 +1,3 @@
 data "aws_codestarconnections_connection" "tf-github" {
-  name = "TF-Github"
+  name = "terraform-cicd-connection"
 }

@@ -1,10 +1,11 @@
 data "aws_s3_bucket" "s3-tf-state" {
-  bucket = "srmk-terraform-state"
+  # bucket = "srmk-terraform-state"
+  bucket = "terraform-cicd-aws-pipeline"
 }
 
 resource "aws_s3_bucket" "s3-bucket-backend" {
-  bucket = var.s3_bucket_name
-  force_destroy = true
+  bucket        = var.s3_bucket_name
+  force_destroy = false
 }
 
 resource "aws_s3_bucket_ownership_controls" "s3-bucket-backend-ownership" {
@@ -16,9 +17,9 @@ resource "aws_s3_bucket_ownership_controls" "s3-bucket-backend-ownership" {
 
 resource "aws_s3_bucket_acl" "s3-bucket-backend-acl" {
   depends_on = [aws_s3_bucket_ownership_controls.s3-bucket-backend-ownership]
-  
+
   bucket = aws_s3_bucket.s3-bucket-backend.id
-  acl = "private"
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_versioning" "s3-bucket-backend-versioning" {

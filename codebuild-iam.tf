@@ -1,42 +1,42 @@
 data "aws_iam_policy_document" "codebuild-policy-document" {
-    statement{
-        actions = ["s3:*"]
-        resources = [
-          "${aws_s3_bucket.s3-bucket-backend.arn}/*",
-          "${aws_s3_bucket.s3-bucket-backend.arn}",
-          join("", [data.aws_s3_bucket.s3-tf-state.arn,"/","*"]),
-          data.aws_s3_bucket.s3-tf-state.arn
-        ]
-        effect = "Allow"
-    }
-    statement {
-      effect = "Allow"
+  statement {
+    actions = ["s3:*"]
+    resources = [
+      "${aws_s3_bucket.s3-bucket-backend.arn}/*",
+      "${aws_s3_bucket.s3-bucket-backend.arn}",
+      join("", [data.aws_s3_bucket.s3-tf-state.arn, "/", "*"]),
+      data.aws_s3_bucket.s3-tf-state.arn
+    ]
+    effect = "Allow"
+  }
+  statement {
+    effect = "Allow"
 
-      actions = [
-        "autoscaling:*", 
-        "cloudwatch:*", 
-        "codestar-connections:*",
-        "codedeploy:*",
-        "codepipeline:*", 
-        "ec2:*", 
-        "elasticloadbalancing:*", 
-        "iam:*", 
-        "kms:*", 
-        "logs:*", 
-        "rds:*",
-        "s3:*", 
-        "secretsmanager:*",
-        "sns:*"
-      ]
+    actions = [
+      "autoscaling:*",
+      "cloudwatch:*",
+      "codestar-connections:*",
+      "codedeploy:*",
+      "codepipeline:*",
+      "ec2:*",
+      "elasticloadbalancing:*",
+      "iam:*",
+      "kms:*",
+      "logs:*",
+      "rds:*",
+      "s3:*",
+      "secretsmanager:*",
+      "sns:*"
+    ]
 
-      resources = ["*"]
-    }        
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "codebuild-policy" {
-    name = var.codebuild_policy_name
-    path = "/"
-    policy = data.aws_iam_policy_document.codebuild-policy-document.json
+  name   = var.codebuild_policy_name
+  path   = "/"
+  policy = data.aws_iam_policy_document.codebuild-policy-document.json
 }
 
 resource "aws_iam_role" "codebuild-role" {
@@ -60,11 +60,11 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild-policy-attachment1" {
-    policy_arn  = aws_iam_policy.codebuild-policy.arn
-    role        = aws_iam_role.codebuild-role.id
+  policy_arn = aws_iam_policy.codebuild-policy.arn
+  role       = aws_iam_role.codebuild-role.id
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild-policy-attachment2" {
-    policy_arn  = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
-    role        = aws_iam_role.codebuild-role.id
+  policy_arn = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
+  role       = aws_iam_role.codebuild-role.id
 }

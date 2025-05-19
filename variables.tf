@@ -1,16 +1,16 @@
 variable "aws_region" {
   type = string
-  default = "us-east-1"
+  default = "ap-south-1"
 }
 
 variable "git_repo_name" {
   type = string
-  default = "srmklive/aws-codedeploy-ec2-alb"
+  default = "skyfam/terraform-codepipeline-aws"
 }
 
 variable "s3_bucket_name" {
     type = string
-    default = "srmk-infra-vpc-backend"
+    default = "terraform-cicd-aws-pipeline-artifacts"
 }
 
 variable "codebuild_role_name" {

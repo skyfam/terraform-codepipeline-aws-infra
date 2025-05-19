@@ -1,19 +1,18 @@
 terraform {
+  required_version = ">= 1.11.0, < 2.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.16"
+      version = "~> 5.94.0"
     }
   }
 
   backend "s3" {
-    bucket = "srmk-terraform-state"
+    bucket  = "terraform-cicd-aws-pipeline"
     encrypt = true
-    key = "terraform.state"
-    region = "us-east-1"
+    key     = "terraform.state"
+    region  = "ap-south-1"
   }
-
-  required_version = ">= 1.2.0"
 }
 
 provider "aws" {}
